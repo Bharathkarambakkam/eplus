@@ -1,0 +1,514 @@
+!-Generator IDFEditor 1.48
+!-Option SortedOrder
+
+!-NOTE: All comments with '!-' are ignored by the IDFEditor and are generated automatically.
+!-      Use '!' comments if they need to be retained when using the IDFEditor.
+
+
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL ===========
+
+Material,
+    BelowGradeMass,          !- Name
+    Rough,                   !- Roughness
+    0.1,                     !- Thickness {m}
+    0.51,                    !- Conductivity {W/m-K}
+    1400,                    !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    FloorCeilingMass,        !- Name
+    Rough,                   !- Roughness
+    0.1,                     !- Thickness {m}
+    0.51,                    !- Conductivity {W/m-K}
+    1400,                    !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    RoofMass,                !- Name
+    Rough,                   !- Roughness
+    0.1,                     !- Thickness {m}
+    0.51,                    !- Conductivity {W/m-K}
+    1400,                    !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+Material,
+    WallMass,                !- Name
+    Rough,                   !- Roughness
+    0.1,                     !- Thickness {m}
+    0.51,                    !- Conductivity {W/m-K}
+    1400,                    !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.9,                     !- Thermal Absorptance
+    0.6,                     !- Solar Absorptance
+    0.6;                     !- Visible Absorptance
+
+
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL:NOMASS ===========
+
+Material:NoMass,
+    BelowGradeIns,           !- Name
+    Rough,                   !- Roughness
+    0.18,                    !- Thermal Resistance {m2-K/W}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+
+Material:NoMass,
+    FloorCeilingIns,         !- Name
+    Rough,                   !- Roughness
+    0.18,                    !- Thermal Resistance {m2-K/W}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+
+Material:NoMass,
+    RoofIns,                 !- Name
+    Rough,                   !- Roughness
+    0.18,                    !- Thermal Resistance {m2-K/W}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+
+Material:NoMass,
+    WallIns,                 !- Name
+    Rough,                   !- Roughness
+    0.18,                    !- Thermal Resistance {m2-K/W}
+    0.9,                     !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+
+
+!-   ===========  ALL OBJECTS IN CLASS: WINDOWMATERIAL:SIMPLEGLAZINGSYSTEM ===========
+
+WindowMaterial:SimpleGlazingSystem,
+    GlazingCons,             !- Name
+    2.0,                     !- U-Factor {W/m2-K}
+    0.36,                    !- Solar Heat Gain Coefficient
+    0.8;                     !- Visible Transmittance
+
+
+!-   ===========  ALL OBJECTS IN CLASS: CONSTRUCTION ===========
+
+Construction,
+    BelowGradeCons,          !- Name
+    BelowGradeMass,          !- Outside Layer
+    BelowGradeIns;           !- Layer 2
+
+Construction,
+    FloorCeilingCons,        !- Name
+    FloorCeilingMass,        !- Outside Layer
+    FloorCeilingIns;         !- Layer 2
+
+Construction,
+    RoofCons,                !- Name
+    RoofMass,                !- Outside Layer
+    RoofIns;                 !- Layer 2
+
+Construction,
+    WallCons,                !- Name
+    WallMass,                !- Outside Layer
+    WallIns;                 !- Layer 2
+
+Construction,
+    WinCons,                 !- Name
+    GlazingCons;             !- Outside Layer
+
+
+!-   ===========  ALL OBJECTS IN CLASS: ZONE ===========
+
+Zone,
+    BelowGrade:BelowGrade,   !- Name
+    0,                       !- Direction of Relative North {deg}
+    0,                       !- X Origin {m}
+    0,                       !- Y Origin {m}
+    -6,                      !- Z Origin {m}
+    1,                       !- Type
+    1,                       !- Multiplier
+    autocalculate,           !- Ceiling Height {m}
+    autocalculate,           !- Volume {m3}
+    autocalculate,           !- Floor Area {m2}
+    TARP,                    !- Zone Inside Convection Algorithm
+    ,                        !- Zone Outside Convection Algorithm
+    Yes;                     !- Part of Total Floor Area
+
+Zone,
+    Core:Core,               !- Name
+    0,                       !- Direction of Relative North {deg}
+    0,                       !- X Origin {m}
+    0,                       !- Y Origin {m}
+    3,                       !- Z Origin {m}
+    1,                       !- Type
+    1,                       !- Multiplier
+    autocalculate,           !- Ceiling Height {m}
+    autocalculate,           !- Volume {m3}
+    autocalculate,           !- Floor Area {m2}
+    TARP,                    !- Zone Inside Convection Algorithm
+    ,                        !- Zone Outside Convection Algorithm
+    Yes;                     !- Part of Total Floor Area
+
+Zone,
+    East:East,               !- Name
+    0,                       !- Direction of Relative North {deg}
+    -152,                    !- X Origin {m}
+    152,                     !- Y Origin {m}
+    30,                      !- Z Origin {m}
+    1,                       !- Type
+    1,                       !- Multiplier
+    autocalculate,           !- Ceiling Height {m}
+    autocalculate,           !- Volume {m3}
+    autocalculate,           !- Floor Area {m2}
+    TARP,                    !- Zone Inside Convection Algorithm
+    ,                        !- Zone Outside Convection Algorithm
+    Yes;                     !- Part of Total Floor Area
+
+Zone,
+    North:North,             !- Name
+    270,                     !- Direction of Relative North {deg}
+    -152,                    !- X Origin {m}
+    -152,                    !- Y Origin {m}
+    30,                      !- Z Origin {m}
+    1,                       !- Type
+    1,                       !- Multiplier
+    autocalculate,           !- Ceiling Height {m}
+    autocalculate,           !- Volume {m3}
+    autocalculate,           !- Floor Area {m2}
+    TARP,                    !- Zone Inside Convection Algorithm
+    ,                        !- Zone Outside Convection Algorithm
+    Yes;                     !- Part of Total Floor Area
+
+Zone,
+    Roof:Roof,               !- Name
+    0,                       !- Direction of Relative North {deg}
+    -304,                    !- X Origin {m}
+    304,                     !- Y Origin {m}
+    60,                      !- Z Origin {m}
+    1,                       !- Type
+    1,                       !- Multiplier
+    autocalculate,           !- Ceiling Height {m}
+    autocalculate,           !- Volume {m3}
+    autocalculate,           !- Floor Area {m2}
+    TARP,                    !- Zone Inside Convection Algorithm
+    ,                        !- Zone Outside Convection Algorithm
+    Yes;                     !- Part of Total Floor Area
+
+Zone,
+    South:South,             !- Name
+    90,                      !- Direction of Relative North {deg}
+    152,                     !- X Origin {m}
+    152,                     !- Y Origin {m}
+    30,                      !- Z Origin {m}
+    1,                       !- Type
+    1,                       !- Multiplier
+    autocalculate,           !- Ceiling Height {m}
+    autocalculate,           !- Volume {m3}
+    autocalculate,           !- Floor Area {m2}
+    TARP,                    !- Zone Inside Convection Algorithm
+    ,                        !- Zone Outside Convection Algorithm
+    Yes;                     !- Part of Total Floor Area
+
+Zone,
+    West:West,               !- Name
+    180,                     !- Direction of Relative North {deg}
+    152,                     !- X Origin {m}
+    -152,                    !- Y Origin {m}
+    30,                      !- Z Origin {m}
+    1,                       !- Type
+    1,                       !- Multiplier
+    autocalculate,           !- Ceiling Height {m}
+    autocalculate,           !- Volume {m3}
+    autocalculate,           !- Floor Area {m2}
+    TARP,                    !- Zone Inside Convection Algorithm
+    ,                        !- Zone Outside Convection Algorithm
+    Yes;                     !- Part of Total Floor Area
+
+
+!-   ===========  ALL OBJECTS IN CLASS: WALL:EXTERIOR ===========
+
+Wall:Exterior,
+    EWall,                   !- Name
+    WallCons,                !- Construction Name
+    East:East,               !- Zone Name
+    90,                      !- Azimuth Angle {deg}
+    90,                      !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    60,                      !- Length {m}
+    3;                       !- Height {m}
+
+Wall:Exterior,
+    NWall,                   !- Name
+    WallCons,                !- Construction Name
+    North:North,             !- Zone Name
+    90,                      !- Azimuth Angle {deg}
+    90,                      !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    60,                      !- Length {m}
+    3;                       !- Height {m}
+
+Wall:Exterior,
+    SWall,                   !- Name
+    WallCons,                !- Construction Name
+    South:South,             !- Zone Name
+    90,                      !- Azimuth Angle {deg}
+    90,                      !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    60,                      !- Length {m}
+    3;                       !- Height {m}
+
+Wall:Exterior,
+    WWall,                   !- Name
+    WallCons,                !- Construction Name
+    West:West,               !- Zone Name
+    90,                      !- Azimuth Angle {deg}
+    90,                      !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    60,                      !- Length {m}
+    3;                       !- Height {m}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: WALL:UNDERGROUND ===========
+
+Wall:Underground,
+    BelowGradeFloor,         !- Name
+    BelowGradeCons,          !- Construction Name
+    BelowGrade:BelowGrade,   !- Zone Name
+    0,                       !- Azimuth Angle {deg}
+    0,                       !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    15,                      !- Length {m}
+    15;                      !- Height {m}
+
+Wall:Underground,
+    BelowGradeWall,          !- Name
+    BelowGradeCons,          !- Construction Name
+    BelowGrade:BelowGrade,   !- Zone Name
+    0,                       !- Azimuth Angle {deg}
+    90,                      !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    60,                      !- Length {m}
+    3;                       !- Height {m}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: ROOF ===========
+
+Roof,
+    Roof,                    !- Name
+    RoofCons,                !- Construction Name
+    Roof:Roof,               !- Zone Name
+    0,                       !- Azimuth Angle {deg}
+    180,                     !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    3,                       !- Starting Z Coordinate {m}
+    30,                      !- Length {m}
+    30;                      !- Width {m}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: CEILING:ADIABATIC ===========
+
+Ceiling:Adiabatic,
+    CoreCeiling,             !- Name
+    FloorCeilingCons,        !- Construction Name
+    Core:Core,               !- Zone Name
+    0,                       !- Azimuth Angle {deg}
+    180,                     !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    3,                       !- Starting Z Coordinate {m}
+    30,                      !- Length {m}
+    30;                      !- Width {m}
+
+Ceiling:Adiabatic,
+    EastCeiling,             !- Name
+    FloorCeilingCons,        !- Construction Name
+    East:East,               !- Zone Name
+    0,                       !- Azimuth Angle {deg}
+    180,                     !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    3,                       !- Starting Z Coordinate {m}
+    4.57,                    !- Length {m}
+    60;                      !- Width {m}
+
+Ceiling:Adiabatic,
+    NorthCeiling,            !- Name
+    FloorCeilingCons,        !- Construction Name
+    North:North,             !- Zone Name
+    0,                       !- Azimuth Angle {deg}
+    180,                     !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    3,                       !- Starting Z Coordinate {m}
+    4.57,                    !- Length {m}
+    60;                      !- Width {m}
+
+Ceiling:Adiabatic,
+    SouthCeiling,            !- Name
+    FloorCeilingCons,        !- Construction Name
+    South:South,             !- Zone Name
+    0,                       !- Azimuth Angle {deg}
+    180,                     !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    3,                       !- Starting Z Coordinate {m}
+    4.57,                    !- Length {m}
+    60;                      !- Width {m}
+
+Ceiling:Adiabatic,
+    WestCeiling,             !- Name
+    FloorCeilingCons,        !- Construction Name
+    West:West,               !- Zone Name
+    0,                       !- Azimuth Angle {deg}
+    180,                     !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    3,                       !- Starting Z Coordinate {m}
+    4.57,                    !- Length {m}
+    60;                      !- Width {m}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: FLOOR:ADIABATIC ===========
+
+Floor:Adiabatic,
+    CoreFloor,               !- Name
+    FloorCeilingCons,        !- Construction Name
+    Core:Core,               !- Zone Name
+    0,                       !- Azimuth Angle {deg}
+    180,                     !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    30,                      !- Length {m}
+    30;                      !- Width {m}
+
+Floor:Adiabatic,
+    EastFloor,               !- Name
+    FloorCeilingCons,        !- Construction Name
+    East:East,               !- Zone Name
+    0,                       !- Azimuth Angle {deg}
+    180,                     !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    4.57,                    !- Length {m}
+    60;                      !- Width {m}
+
+Floor:Adiabatic,
+    NorthFloor,              !- Name
+    FloorCeilingCons,        !- Construction Name
+    North:North,             !- Zone Name
+    0,                       !- Azimuth Angle {deg}
+    180,                     !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    4.57,                    !- Length {m}
+    60;                      !- Width {m}
+
+Floor:Adiabatic,
+    RoofFloor,               !- Name
+    FloorCeilingCons,        !- Construction Name
+    Roof:Roof,               !- Zone Name
+    0,                       !- Azimuth Angle {deg}
+    180,                     !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    30,                      !- Length {m}
+    30;                      !- Width {m}
+
+Floor:Adiabatic,
+    SouthFloor,              !- Name
+    FloorCeilingCons,        !- Construction Name
+    South:South,             !- Zone Name
+    0,                       !- Azimuth Angle {deg}
+    180,                     !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    4.57,                    !- Length {m}
+    60;                      !- Width {m}
+
+Floor:Adiabatic,
+    WestFloor,               !- Name
+    FloorCeilingCons,        !- Construction Name
+    West:West,               !- Zone Name
+    0,                       !- Azimuth Angle {deg}
+    180,                     !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    4.57,                    !- Length {m}
+    60;                      !- Width {m}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: WINDOW ===========
+
+Window,
+    EWin,                    !- Name
+    WinCons,                 !- Construction Name
+    EWall,                   !- Building Surface Name
+    ,                        !- Shading Control Name
+    ,                        !- Frame and Divider Name
+    1,                       !- Multiplier
+    0,                       !- Starting X Coordinate {m}
+    0.3048,                  !- Starting Z Coordinate {m}
+    30,                      !- Length {m}
+    2.4384;                  !- Height {m}
+
+Window,
+    NWin,                    !- Name
+    WinCons,                 !- Construction Name
+    NWall,                   !- Building Surface Name
+    ,                        !- Shading Control Name
+    ,                        !- Frame and Divider Name
+    1,                       !- Multiplier
+    0,                       !- Starting X Coordinate {m}
+    0.3048,                  !- Starting Z Coordinate {m}
+    30,                      !- Length {m}
+    2.4384;                  !- Height {m}
+
+Window,
+    SWin,                    !- Name
+    WinCons,                 !- Construction Name
+    SWall,                   !- Building Surface Name
+    ,                        !- Shading Control Name
+    ,                        !- Frame and Divider Name
+    1,                       !- Multiplier
+    0,                       !- Starting X Coordinate {m}
+    0.3048,                  !- Starting Z Coordinate {m}
+    30,                      !- Length {m}
+    2.4384;                  !- Height {m}
+
+Window,
+    WWin,                    !- Name
+    WinCons,                 !- Construction Name
+    WWall,                   !- Building Surface Name
+    ,                        !- Shading Control Name
+    ,                        !- Frame and Divider Name
+    1,                       !- Multiplier
+    0,                       !- Starting X Coordinate {m}
+    0.3048,                  !- Starting Z Coordinate {m}
+    30,                      !- Length {m}
+    2.4384;                  !- Height {m}
+
