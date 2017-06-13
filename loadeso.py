@@ -1,7 +1,8 @@
+
 """
 Bharath Karambakkam
 e-mail:Bharath.karambakkam@imegcorp.com
-function: Load EnergyPlus Hourly output file (*.eso)
+file: Load EnergyPlus Hourly output file (*.eso)
 """
 
 
@@ -30,7 +31,7 @@ def loadeso_old(fname):
 
 def loadeso(fname):
     """
-    Works only if all hourly variables are of equal length. 
+    Works only if all hourly variables are of equal length 
     """ 
     with open(fname,'r') as f: varstr = f.read()
     colstr,datstr,end = varstr.split('End of')
@@ -40,7 +41,10 @@ def loadeso(fname):
     dtx=pd.to_datetime(2012*100000000 + d[0]*1000000 + d[1]*10000+(d[2]-1)*100+d[3], format='%Y%m%d%H%M')
 
     eso=pd.DataFrame(pd.read_csv(io.StringIO(re.sub('^2,.*\n','',datstr,flags=re.M)),skiprows=2,header=None,dtype=np.float).groupby(0).groups,index=dtx)
-    eso.columns=cols.loc[eso.columns.astype(int).values,[2,3]]
+    eso = pd.read_csv(io.StringIO(re.sub('^2,.*\n','',datstr,flags=re.M)),skiprows=2,header=None,dtype=np.float)
+    eso['hrs'] = eso.groupby(0).cumcount()
+    eso = eso.set_index(['hrs',0]).unstack()
+    eso.columns=cols.loc[eso.columns.get_level_values(0).astype(int).values,[2,3]]
     
     return eso
 
