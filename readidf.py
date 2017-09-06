@@ -39,7 +39,7 @@ class idf(object):
 
         idfTable.columns=idfTable.columns-1
         idfTable[1].fillna('',inplace=True)
-        self.t = idfTable.stack().sortlevel(0)
+        self.t = idfTable.stack().sort_index(level=0)
         self.t.name='val'
         self.t.index.set_names(['class','name','par'],inplace=True)
 
@@ -49,7 +49,7 @@ class idf(object):
         with open('parnames.csv') as f:n = pd.read_csv(f.read())
         self.t=pd.merge(n,self.t.reset_index(),how='outer').ffill(axis=1).drop('par',axis=1)
         self.t.set_index(['class','name','title'],inplace=True)
-        self.t.sortlevel(0)
+        self.t.soft_index(level=0)
 
     def writeidf(self,fname):
         s = io.StringIO()

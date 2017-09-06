@@ -40,10 +40,11 @@ def loadeso(fname):
     d = pd.DataFrame(re.findall('2,[ 0-9]*,([ 0-9]*),([ 0-9]*),[ 0-1]*,([ 0-9]*),([ 0-9.]*),[ 0-9.]*,[A-Z]',datstr),dtype=np.float).astype(int)
     dtx=pd.to_datetime(2012*100000000 + d[0]*1000000 + d[1]*10000+(d[2]-1)*100+d[3], format='%Y%m%d%H%M')
 
-    eso=pd.DataFrame(pd.read_csv(io.StringIO(re.sub('^2,.*\n','',datstr,flags=re.M)),skiprows=2,header=None,dtype=np.float).groupby(0).groups,index=dtx)
+    eso=pd.DataFrame(pd.read_csv(io.StringIO(re.sub('^2,.*\n','',datstr,flags=re.M)),skiprows=2,header=None,dtype=np.float).groupby(0).groups)
     eso = pd.read_csv(io.StringIO(re.sub('^2,.*\n','',datstr,flags=re.M)),skiprows=2,header=None,dtype=np.float)
     eso['hrs'] = eso.groupby(0).cumcount()
     eso = eso.set_index(['hrs',0]).unstack()
+    eso.index=dtx
     eso.columns=cols.loc[eso.columns.get_level_values(0).astype(int).values,[2,3]]
     
     return eso

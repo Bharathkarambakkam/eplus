@@ -33,20 +33,19 @@ def runeplus(idffiles,wea,rem=True,ver='EnergyPlusV8-4-0',showprogress=None):
                 if rem:shutil.rmtree(e)
                 status.pop(e)
 
-
-
-def runpar(parf,parmap,sruns=10):
+def runpar(parf,parmap,sruns=10,rem=True):
     pr = pd.read_hdf(parf)
     lidf =  len(pr['idf'].unique()) 
     lwea =  len(pr['wea'].unique()) 
     lsch =  len(pr['inf:sch'].unique()) 
+    libsch = readidf.idf('C:\\Projects\\Tools\\ePlus\\sch.idf')
     for ixf,(f,df) in enumerate(pr[~pr['run']].groupby('idf')):
         parbld = readidf.idf(f)
         print('*************************************************'+ f +': ' +str(ixf+1)+' of '+str(lidf))
         for ixw,(w,dw) in enumerate(df.groupby('wea')):
             print('---------------------------------'+ w +': '+str(ixw+1)+' of '+str(lwea))
             for ixs,(s,ds) in enumerate(dw.groupby('inf:sch')):
-                parsetup.setsch(parbld,s)
+                parsetup.setsch(parbld,libsch,s)
                 print('................'+s+': '+str(ixs+1)+' of '+str(lsch))
                 lgrp = int(len(ds.index)/sruns)
                 for ixk,dk in enumerate(np.array_split(ds,lgrp)):
@@ -58,14 +57,10 @@ def runpar(parf,parmap,sruns=10):
                     cases=[str(n)+'.idf' for n in dk.index]
                     runeplus(cases,'C:\\ProgramData\\DesignBuilder\\Weather Data\\'+w,showprogress=False)
                     for n,r in dk.iterrows():
-                        xml = exml.exml(str(n)+'Table.xml')
-                        pr.loc[n,['EUI','elec','gas','run']]=[
-                        xml.getEUI(),
-                        xml.getprm().sum()[0],
-                        xml.getprm().sum()[1],
-                        True
-                        ]
-                        os.remove(str(n)+'.idf')
-                        os.remove(str(n)+'Table.xml')
-                        os.remove(str(n)+'Table.html')
+                        xf = exml.exml(str(n)+'Table.xml').getstd()
+                        pr.loc[n,xf.index]=xf
+                        pr.loc[n,'run']=True
+                        if rem:os.remove(str(n)+'.idf')
+                        if rem:os.remove(str(n)+'Table.xml')
+                        if rem:os.remove(str(n)+'Table.html')
                     pr.to_hdf(parf,'w')

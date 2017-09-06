@@ -126,7 +126,7 @@ Construction,
 !-   ===========  ALL OBJECTS IN CLASS: ZONE ===========
 
 Zone,
-    BelowGrade:BelowGrade,   !- Name
+    BelowGrade:1,   !- Name
     0,                       !- Direction of Relative North {deg}
     0,                       !- X Origin {m}
     0,                       !- Y Origin {m}
@@ -141,7 +141,7 @@ Zone,
     Yes;                     !- Part of Total Floor Area
 
 Zone,
-    Core:Core,               !- Name
+    Core:1,               !- Name
     0,                       !- Direction of Relative North {deg}
     0,                       !- X Origin {m}
     0,                       !- Y Origin {m}
@@ -156,7 +156,7 @@ Zone,
     Yes;                     !- Part of Total Floor Area
 
 Zone,
-    East:East,               !- Name
+    East:1,               !- Name
     0,                       !- Direction of Relative North {deg}
     -152,                    !- X Origin {m}
     152,                     !- Y Origin {m}
@@ -171,7 +171,7 @@ Zone,
     Yes;                     !- Part of Total Floor Area
 
 Zone,
-    North:North,             !- Name
+    North:1,             !- Name
     270,                     !- Direction of Relative North {deg}
     -152,                    !- X Origin {m}
     -152,                    !- Y Origin {m}
@@ -186,7 +186,7 @@ Zone,
     Yes;                     !- Part of Total Floor Area
 
 Zone,
-    Roof:Roof,               !- Name
+    Roof:1,               !- Name
     0,                       !- Direction of Relative North {deg}
     -304,                    !- X Origin {m}
     304,                     !- Y Origin {m}
@@ -201,7 +201,7 @@ Zone,
     Yes;                     !- Part of Total Floor Area
 
 Zone,
-    South:South,             !- Name
+    South:1,             !- Name
     90,                      !- Direction of Relative North {deg}
     152,                     !- X Origin {m}
     152,                     !- Y Origin {m}
@@ -216,7 +216,7 @@ Zone,
     Yes;                     !- Part of Total Floor Area
 
 Zone,
-    West:West,               !- Name
+    West:1,               !- Name
     180,                     !- Direction of Relative North {deg}
     152,                     !- X Origin {m}
     -152,                    !- Y Origin {m}
@@ -236,7 +236,7 @@ Zone,
 Wall:Exterior,
     EWall,                   !- Name
     WallCons,                !- Construction Name
-    East:East,               !- Zone Name
+    East:1,               !- Zone Name
     90,                      !- Azimuth Angle {deg}
     90,                      !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -248,7 +248,7 @@ Wall:Exterior,
 Wall:Exterior,
     NWall,                   !- Name
     WallCons,                !- Construction Name
-    North:North,             !- Zone Name
+    North:1,             !- Zone Name
     90,                      !- Azimuth Angle {deg}
     90,                      !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -260,7 +260,7 @@ Wall:Exterior,
 Wall:Exterior,
     SWall,                   !- Name
     WallCons,                !- Construction Name
-    South:South,             !- Zone Name
+    South:1,             !- Zone Name
     90,                      !- Azimuth Angle {deg}
     90,                      !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -272,7 +272,7 @@ Wall:Exterior,
 Wall:Exterior,
     WWall,                   !- Name
     WallCons,                !- Construction Name
-    West:West,               !- Zone Name
+    West:1,               !- Zone Name
     90,                      !- Azimuth Angle {deg}
     90,                      !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -282,12 +282,12 @@ Wall:Exterior,
     3;                       !- Height {m}
 
 
-!-   ===========  ALL OBJECTS IN CLASS: WALL:UNDERGROUND ===========
+!-   ===========  ALL OBJECTS IN CLASS: WALL:GROUNDCONTACT ===========
 
-Wall:Underground,
+Floor:GroundContact,
     BelowGradeFloor,         !- Name
     BelowGradeCons,          !- Construction Name
-    BelowGrade:BelowGrade,   !- Zone Name
+    BelowGrade:1,   !- Zone Name
     0,                       !- Azimuth Angle {deg}
     0,                       !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -296,10 +296,12 @@ Wall:Underground,
     15,                      !- Length {m}
     15;                      !- Height {m}
 
+!-   ===========  ALL OBJECTS IN CLASS: WALL:UNDERGROUND ===========
+
 Wall:Underground,
     BelowGradeWall,          !- Name
     BelowGradeCons,          !- Construction Name
-    BelowGrade:BelowGrade,   !- Zone Name
+    BelowGrade:1,   !- Zone Name
     0,                       !- Azimuth Angle {deg}
     90,                      !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -314,7 +316,7 @@ Wall:Underground,
 Roof,
     Roof,                    !- Name
     RoofCons,                !- Construction Name
-    Roof:Roof,               !- Zone Name
+    Roof:1,               !- Zone Name
     0,                       !- Azimuth Angle {deg}
     180,                     !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -329,7 +331,7 @@ Roof,
 Ceiling:Adiabatic,
     CoreCeiling,             !- Name
     FloorCeilingCons,        !- Construction Name
-    Core:Core,               !- Zone Name
+    Core:1,               !- Zone Name
     0,                       !- Azimuth Angle {deg}
     180,                     !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -341,7 +343,7 @@ Ceiling:Adiabatic,
 Ceiling:Adiabatic,
     EastCeiling,             !- Name
     FloorCeilingCons,        !- Construction Name
-    East:East,               !- Zone Name
+    East:1,               !- Zone Name
     0,                       !- Azimuth Angle {deg}
     180,                     !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -353,7 +355,7 @@ Ceiling:Adiabatic,
 Ceiling:Adiabatic,
     NorthCeiling,            !- Name
     FloorCeilingCons,        !- Construction Name
-    North:North,             !- Zone Name
+    North:1,             !- Zone Name
     0,                       !- Azimuth Angle {deg}
     180,                     !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -365,7 +367,7 @@ Ceiling:Adiabatic,
 Ceiling:Adiabatic,
     SouthCeiling,            !- Name
     FloorCeilingCons,        !- Construction Name
-    South:South,             !- Zone Name
+    South:1,             !- Zone Name
     0,                       !- Azimuth Angle {deg}
     180,                     !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -377,7 +379,7 @@ Ceiling:Adiabatic,
 Ceiling:Adiabatic,
     WestCeiling,             !- Name
     FloorCeilingCons,        !- Construction Name
-    West:West,               !- Zone Name
+    West:1,               !- Zone Name
     0,                       !- Azimuth Angle {deg}
     180,                     !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -392,7 +394,7 @@ Ceiling:Adiabatic,
 Floor:Adiabatic,
     CoreFloor,               !- Name
     FloorCeilingCons,        !- Construction Name
-    Core:Core,               !- Zone Name
+    Core:1,               !- Zone Name
     0,                       !- Azimuth Angle {deg}
     180,                     !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -404,7 +406,7 @@ Floor:Adiabatic,
 Floor:Adiabatic,
     EastFloor,               !- Name
     FloorCeilingCons,        !- Construction Name
-    East:East,               !- Zone Name
+    East:1,               !- Zone Name
     0,                       !- Azimuth Angle {deg}
     180,                     !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -416,7 +418,7 @@ Floor:Adiabatic,
 Floor:Adiabatic,
     NorthFloor,              !- Name
     FloorCeilingCons,        !- Construction Name
-    North:North,             !- Zone Name
+    North:1,             !- Zone Name
     0,                       !- Azimuth Angle {deg}
     180,                     !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -428,7 +430,7 @@ Floor:Adiabatic,
 Floor:Adiabatic,
     RoofFloor,               !- Name
     FloorCeilingCons,        !- Construction Name
-    Roof:Roof,               !- Zone Name
+    Roof:1,               !- Zone Name
     0,                       !- Azimuth Angle {deg}
     180,                     !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -440,7 +442,7 @@ Floor:Adiabatic,
 Floor:Adiabatic,
     SouthFloor,              !- Name
     FloorCeilingCons,        !- Construction Name
-    South:South,             !- Zone Name
+    South:1,             !- Zone Name
     0,                       !- Azimuth Angle {deg}
     180,                     !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -452,7 +454,7 @@ Floor:Adiabatic,
 Floor:Adiabatic,
     WestFloor,               !- Name
     FloorCeilingCons,        !- Construction Name
-    West:West,               !- Zone Name
+    West:1,               !- Zone Name
     0,                       !- Azimuth Angle {deg}
     180,                     !- Tilt Angle {deg}
     0,                       !- Starting X Coordinate {m}
@@ -511,4 +513,3 @@ Window,
     0.3048,                  !- Starting Z Coordinate {m}
     30,                      !- Length {m}
     2.4384;                  !- Height {m}
-
